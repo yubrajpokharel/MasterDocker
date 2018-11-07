@@ -1,9 +1,11 @@
 #use the existing image
-FROM alpine
+FROM node:alpine
 
-#download and install dependencies
-RUN apk add --update redis
+#copy files to the container
+COPY ./ ./
 
+#install dependencies
+RUN npm install
 
-#tell the image what to do when it starts as a container
-CMD ["redis-server"]
+#default command
+CMD ["npm", "start"]
